@@ -1,0 +1,97 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'start.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.0
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.widget = QtWidgets.QWidget(self.centralwidget)
+        self.widget.setGeometry(QtCore.QRect(100, 0, 600, 600))
+        self.widget.setObjectName("widget")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(self.widget)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 10, 601, 41))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.take_part = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.take_part.setObjectName("take_part")
+        self.horizontalLayout.addWidget(self.take_part)
+        spacerItem = QtWidgets.QSpacerItem(70, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.mean_value = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.mean_value.setObjectName("mean_value")
+        self.horizontalLayout.addWidget(self.mean_value)
+        spacerItem1 = QtWidgets.QSpacerItem(70, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.rate_value = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.rate_value.setObjectName("rate_value")
+        self.horizontalLayout.addWidget(self.rate_value)
+        spacerItem2 = QtWidgets.QSpacerItem(70, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
+        self.increasing_value = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.increasing_value.setObjectName("increasing_value")
+        self.horizontalLayout.addWidget(self.increasing_value)
+        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.widget)
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(0, 100, 601, 421))
+        self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.textEdit = QtWidgets.QTextEdit(self.horizontalLayoutWidget_3)
+        self.textEdit.setObjectName("textEdit")
+        self.horizontalLayout_3.addWidget(self.textEdit)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.pushButton = QtWidgets.QPushButton(self.horizontalLayoutWidget_3)
+        self.pushButton.setEnabled(False)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout_2.addWidget(self.pushButton)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_2.addItem(spacerItem3)
+        self.pushButton_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget_3)
+        self.pushButton_2.setEnabled(False)
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.verticalLayout_2.addWidget(self.pushButton_2)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_2.addItem(spacerItem4)
+        self.pushButton_4 = QtWidgets.QPushButton(self.horizontalLayoutWidget_3)
+        self.pushButton_4.setEnabled(False)
+        self.pushButton_4.setObjectName("pushButton_4")
+        self.verticalLayout_2.addWidget(self.pushButton_4)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem5)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_2)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.take_part.setText(_translate("MainWindow", "拆分数据"))
+        self.mean_value.setText(_translate("MainWindow", "平均值法"))
+        self.rate_value.setText(_translate("MainWindow", "比例取值"))
+        self.increasing_value.setText(_translate("MainWindow", "应变不减"))
+        self.pushButton.setText(_translate("MainWindow", "导入"))
+        self.pushButton_2.setText(_translate("MainWindow", "开始"))
+        self.pushButton_4.setText(_translate("MainWindow", "导出"))
