@@ -4,7 +4,6 @@
 
 import pandas as pd
 import numpy as np
-import datetime
 
 class DataHander(object):
     """
@@ -13,7 +12,7 @@ class DataHander(object):
     def __init__(self):
         self.data = None
 
-    def take_part(self,frequence,file_name,**kwargs):
+    def take_part(self,frequence,file_name,ele,cb=None):
         """
         将每秒数据按照频率拆分开来
         kwargs{
@@ -39,33 +38,43 @@ class DataHander(object):
                     data_list[row] = item.iloc[row]
                 except IndexError:
                     break
-        new_df_list = []
+
         for i, test_data in enumerate(data_list):
-            new_df_list.append(pd.DataFrame(test_data, columns=df.columns))
-        self.data = new_df_list
+            if i == ele-1:
+                self.data = pd.DataFrame(test_data, columns=df.columns)
 
-        try:
-            kwargs["textEdit"].append("<font style='color:green;'>{} &nbsp;&nbsp;<strong>√</strong> 拆分完成：{}</font><br>".format(
-                    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), file_name) + "\n")
-        except KeyError:
-            print("keyerror")
-        btn = kwargs.get("pushButton","")
-        if btn:
-            self.common_func(btn,"take_part")
+        msg = "拆分完成：{}".format(file_name)
+        if cb is not None and callable(cb):
+            cb("green",msg,"take_part")
+
+    def mean_value(self,path,cb=None):
+        df = pd.read_csv(path)
+        grouped = df.groupby(by=[df["wind"]])
+        columns = None
+        values = None
+        for wind, item in grouped:
+            data = item.mean(axis=0)
+            if columns is None:
+                print(data)
+                columns = data.index
+                values = data.values
+            else:
+                try:
+                    values = np.vstack((values, data.values))
+                except Exception as e:
+                    pass
+        self.data = pd.DataFrame(values,columns=columns)
+        if cb is not None and callable(cb):
+            msg = "处理完成"
+            cb("green",msg,"mean_value")
 
 
-    def common_func(self,btn,obj_name):
-        btn.setEnabled(True)
-        btn.setObjectName(obj_name)
-
-    def export(self,path,textEdit):
-        if isinstance(self.data,list):
-            for i,new_df in enumerate(self.data):
-                file_name = path  + str(i+1) + ".csv"
-                textEdit.append("<font style='color:green;'>{} &nbsp;&nbsp;<strong>√</strong> {}&nbsp;已导出完成</font><br>".format(
-                    datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), file_name) + "\n")
-                new_df.to_csv(file_name)
-            return True
+    def export(self,path,cb=None):
+        file_name = path.rsplit("/",1)[1]
+        self.data.to_csv(file_name)
+        msg = "已导出完成".format(file_name)
+        if cb is not None and callable(cb):
+            cb("green",msg)
 
 
 data_handler = DataHander()
